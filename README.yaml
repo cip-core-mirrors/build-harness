@@ -15,27 +15,27 @@ license: "APACHE2"
 
 # Copyrights
 copyrights:
-  - name: "Cloud Posse, LLC"
-    url: "https://cloudposse.com"
-    year: "2016"
+  - name: "Cloud Innovation Platform"
+    url: "https://portal.sgcip.com"
+    year: "2017"
 
 # Canonical GitHub repo 
-github_repo: cloudposse/build-harness
+github_repo: sgcip/build-harness
 
 # Badges to display
 badges:
   - name: "Build Status"
-    image: "https://travis-ci.org/cloudposse/build-harness.svg?branch=master"
-    url: "https://travis-ci.org/cloudposse/build-harness"
+    image: "https://travis-ci.org/sgcip/build-harness.svg?branch=master"
+    url: "https://travis-ci.org/sgcip/build-harness"
   - name: "Latest Release"
-    image: "https://img.shields.io/github/release/cloudposse/build-harness.svg"
-    url: "https://github.com/cloudposse/build-harness/releases/latest"
+    image: "https://img.shields.io/github/release/sgcip/build-harness.svg"
+    url: "https://github.com/sgcip/build-harness/releases/latest"
   - name: "Slack Community"
-    image: "https://slack.cloudposse.com/badge.svg"
-    url: "https://slack.cloudposse.com"
+    image: "https://slack.sgcip.com/badge.svg"
+    url: "https://slack.sgcip.com"
   - name: "Discourse Forum"
-    image: "https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg"
-    url: "https://ask.sweetops.com/"
+    image: "https://img.shields.io/discourse/https/ask.sgcip.com/posts.svg"
+    url: "https://ask.sgcip.com/"
 
 related:
   - name: "Packages"
@@ -71,7 +71,7 @@ usage: |-
   At the top of your `Makefile` add, the following...
 
   ```make
-  -include $(shell curl -sSL -o .build-harness "https://git.io/build-harness"; echo .build-harness)
+  -include $(shell curl -sSL -o .build-harness "https://git.io/sgcip-utils-bh"; echo .build-harness)
   ```
 
   This will download a `Makefile` called `.build-harness` and include it at run-time. We recommend adding the `.build-harness` file to your `.gitignore`.
@@ -97,7 +97,7 @@ usage: |-
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@master
-      - uses: cloudposse/build-harness@master
+      - uses: sgcip/build-harness@master
         with:
           entrypoint: /usr/bin/make
           args: readme/lint
@@ -115,8 +115,8 @@ examples: |-
 quickstart: |-
   Here's how to get started...
 
-  1. `git clone https://github.com/cloudposse/build-harness.git` to pull down the repository
-  2. `make init` to initialize the [`build-harness`](https://github.com/cloudposse/build-harness/)
+  1. `git clone https://github.com/sgcip/build-harness.git` to pull down the repository
+  2. `make init` to initialize the [`build-harness`](https://github.com/sgcip/build-harness/)
 
 # Other files to include in this README from the project folder
 include:
@@ -137,3 +137,5 @@ contributors:
     github: "alebabai"
   - name: "Jon Boulle"
     github: "jonboulle"
+  - name: "Patrice Lachance"
+    github: "patlachance"

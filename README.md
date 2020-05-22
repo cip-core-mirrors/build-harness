@@ -20,7 +20,6 @@
   ** 2) Run `make init` (you only need to do this once)
   ** 3) Run`make readme` to rebuild this file. 
   **
-  ** (We maintain HUNDREDS of open source projects. This is how we maintain our sanity.)
   **
 
 
@@ -38,11 +37,9 @@
 
 
   -->
-[![README Header][readme_header_img]][readme_header_link]
 
-[![Cloud Posse][logo]](https://cpco.io/homepage)
 
-# Build Harness [![Build Status](https://travis-ci.org/cloudposse/build-harness.svg?branch=master)](https://travis-ci.org/cloudposse/build-harness) [![Latest Release](https://img.shields.io/github/release/cloudposse/build-harness.svg)](https://github.com/cloudposse/build-harness/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com) [![Discourse Forum](https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg)](https://ask.sweetops.com/)
+# Build Harness [![Build Status](https://travis-ci.org/sgcip/build-harness.svg?branch=master)](https://travis-ci.org/sgcip/build-harness) [![Latest Release](https://img.shields.io/github/release/sgcip/build-harness.svg)](https://github.com/sgcip/build-harness/releases/latest) [![Slack Community](https://slack.sgcip.com/badge.svg)](https://slack.sgcip.com) [![Discourse Forum](https://img.shields.io/discourse/https/ask.sgcip.com/posts.svg)](https://ask.sgcip.com/)
 
 
 This `build-harness` is a collection of Makefiles to facilitate building Golang projects, Dockerfiles, Helm charts, and more.
@@ -51,7 +48,7 @@ It's designed to work with CI/CD systems such as GitHub Actions, Codefresh, Trav
 
 ---
 
-This project is part of our comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps. 
+This project is part of our ["open source"](#) strategy.
 [<img align="right" title="Share via Email" src="https://docs.cloudposse.com/images/ionicons/ios-email-outline-2.0.1-16x16-999999.svg"/>][share_email]
 [<img align="right" title="Share on Google+" src="https://docs.cloudposse.com/images/ionicons/social-googleplus-outline-2.0.1-16x16-999999.svg" />][share_googleplus]
 [<img align="right" title="Share on Facebook" src="https://docs.cloudposse.com/images/ionicons/social-facebook-outline-2.0.1-16x16-999999.svg" />][share_facebook]
@@ -60,12 +57,7 @@ This project is part of our comprehensive ["SweetOps"](https://cpco.io/sweetops)
 [<img align="right" title="Share on Twitter" src="https://docs.cloudposse.com/images/ionicons/social-twitter-outline-2.0.1-16x16-999999.svg" />][share_twitter]
 
 
-
-
 It's 100% Open Source and licensed under the [APACHE2](LICENSE).
-
-
-
 
 
 
@@ -82,6 +74,9 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 
+
+
+
 ## Usage
 
 
@@ -89,7 +84,7 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 At the top of your `Makefile` add, the following...
 
 ```make
--include $(shell curl -sSL -o .build-harness "https://git.io/build-harness"; echo .build-harness)
+-include $(shell curl -sSL -o .build-harness "https://git.io/sgcip-utils-bh"; echo .build-harness)
 ```
 
 This will download a `Makefile` called `.build-harness` and include it at run-time. We recommend adding the `.build-harness` file to your `.gitignore`.
@@ -115,7 +110,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: cloudposse/build-harness@master
+    - uses: sgcip/build-harness@master
       with:
         entrypoint: /usr/bin/make
         args: readme/lint
@@ -125,8 +120,8 @@ jobs:
 
 Here's how to get started...
 
-1. `git clone https://github.com/cloudposse/build-harness.git` to pull down the repository
-2. `make init` to initialize the [`build-harness`](https://github.com/cloudposse/build-harness/)
+1. `git clone https://github.com/sgcip/build-harness.git` to pull down the repository
+2. `make init` to initialize the [`build-harness`](https://github.com/sgcip/build-harness/)
 
 
 ## Examples
@@ -185,13 +180,13 @@ Available targets:
   geodesic/deploy                     Run a Jenkins Job to Deploy $(APP) with $(CANONICAL_TAG)
   git/aliases-update                  Update git aliases
   git/export                          Export git vars
-  git/submodules-update               Update submodules
   github/download-private-release     Download release from github
   github/download-public-release      Download release from github
   github/latest-release               Fetch the latest release tag from the GitHub API
   github/push-artifacts               Push all release artifacts to GitHub (Required: `GITHUB_TOKEN`)
   gitleaks/install                    Install gitleaks
   gitleaks/scan                       Scan current repository
+  git/submodules-update               Update submodules
   go/build                            Build binary
   go/build-all                        Build binary for all platforms
   go/clean                            Clean compiled binary
@@ -220,6 +215,7 @@ Available targets:
   helm/delete/failed                  Delete all failed releases in a `NAMESPACE` subject to `FILTER`
   helm/delete/namespace               Delete all releases in a `NAMEPSACE` as well as the namespace
   helm/delete/namespace/empty         Delete `NAMESPACE` if there are no releases in it
+  helmfile/install                    Install helmfile
   helm/install                        Install helm
   helm/repo/add                       Add $REPO_NAME from $REPO_ENDPOINT
   helm/repo/add-current               Add helm remote dev repos
@@ -232,17 +228,16 @@ Available targets:
   helm/repo/update                    Update repo info
   helm/serve/index                    Build index for serve helm charts
   helm/toolbox/upsert                 Install or upgrade helm tiller 
-  helmfile/install                    Install helmfile
   help                                Help screen
   help/all                            Display help for all targets
   help/short                          This help short screen
   jenkins/run-job-with-tag            Run a Jenkins Job with $(TAG)
   make/lint                           Lint all makefiles
   packages/delete                     Delete packages
-  packages/install                    Install packages 
   packages/install/%                  Install package (e.g. helm, helmfile, kubectl)
-  packages/reinstall                  Reinstall packages
+  packages/install                    Install packages 
   packages/reinstall/%                Reinstall package (e.g. helm, helmfile, kubectl)
+  packages/reinstall                  Reinstall packages
   packages/uninstall/%                Uninstall package (e.g. helm, helmfile, kubectl)
   readme                              Alias for readme/build
   readme/build                        Create README.md by building it from README.yaml
@@ -275,7 +270,7 @@ Modules will be combined and available with a unified `make` command.
 
 ## Share the Love 
 
-Like this project? Please give it a ★ on [our GitHub](https://github.com/cloudposse/build-harness)! (it helps us **a lot**) 
+Like this project? Please give it a ★ on [our GitHub](https://github.com/sgcip/build-harness)! (it helps us **a lot**) 
 
 Are you using this project or any of our other projects? Consider [leaving a testimonial][testimonial]. =)
 
@@ -301,55 +296,13 @@ For additional context, refer to some of these links.
 
 **Got a question?** We got answers. 
 
-File a GitHub [issue](https://github.com/cloudposse/build-harness/issues), send us an [email][email] or join our [Slack Community][slack].
-
-[![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
-
-## DevOps Accelerator for Startups
-
-
-We are a [**DevOps Accelerator**][commercial_support]. We'll help you build your cloud infrastructure from the ground up so you can own it. Then we'll show you how to operate it and stick around for as long as you need us. 
-
-[![Learn More](https://img.shields.io/badge/learn%20more-success.svg?style=for-the-badge)][commercial_support]
-
-Work directly with our team of DevOps experts via email, slack, and video conferencing.
-
-We deliver 10x the value for a fraction of the cost of a full-time engineer. Our track record is not even funny. If you want things done right and you need it done FAST, then we're your best bet.
-
-- **Reference Architecture.** You'll get everything you need from the ground up built using 100% infrastructure as code.
-- **Release Engineering.** You'll have end-to-end CI/CD with unlimited staging environments.
-- **Site Reliability Engineering.** You'll have total visibility into your apps and microservices.
-- **Security Baseline.** You'll have built-in governance with accountability and audit logs for all changes.
-- **GitOps.** You'll be able to operate your infrastructure via Pull Requests.
-- **Training.** You'll receive hands-on training so your team can operate what we build.
-- **Questions.** You'll have a direct line of communication between our teams via a Shared Slack channel.
-- **Troubleshooting.** You'll get help to triage when things aren't working.
-- **Code Reviews.** You'll receive constructive feedback on Pull Requests.
-- **Bug Fixes.** We'll rapidly work with you to fix any bugs in our projects.
-
-## Slack Community
-
-Join our [Open Source Community][slack] on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
-
-## Discourse Forums
-
-Participate in our [Discourse Forums][discourse]. Here you'll find answers to commonly asked questions. Most questions will be related to the enormous number of projects we support on our GitHub. Come here to collaborate on answers, find solutions, and get ideas about the products and services we value. It only takes a minute to get started! Just sign in with SSO using your GitHub account.
-
-## Newsletter
-
-Sign up for [our newsletter][newsletter] that covers everything on our technology radar.  Receive updates on what we're up to on GitHub as well as awesome new projects we discover. 
-
-## Office Hours
-
-[Join us every Wednesday via Zoom][office_hours] for our weekly "Lunch & Learn" sessions. It's **FREE** for everyone! 
-
-[![zoom](https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png")][office_hours]
+File a GitHub [issue](https://github.com/sgcip/build-harness/issues), send us an [email][email] or join our [Slack Community][slack].
 
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/cloudposse/build-harness/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/sgcip/build-harness/issues) to report any bugs or file feature requests.
 
 ### Developing
 
@@ -369,7 +322,7 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
 ## Copyrights
 
-Copyright © 2016-2020 [Cloud Posse, LLC](https://cloudposse.com)
+Copyright © 2017-2020 [Cloud Innovation Platform](https://portal.sgcip.com)
 
 
 
@@ -412,22 +365,20 @@ All other trademarks referenced herein are the property of their respective owne
 
 ## About
 
-This project is maintained and funded by [Cloud Posse, LLC][website]. Like it? Please let us know by [leaving a testimonial][testimonial]!
+[![CIP][logo]][cipcorpwebsite]  This project is maintained and funded by [CIP][cipcorpwebsite].
 
-[![Cloud Posse][logo]][website]
+This Cloud Innovation Platform is built by passionate people located all around the world.
+And because we ❤️ [Open Source Software][we_love_open_source], we decided to open source it.
 
-We're a [DevOps Professional Services][hire] company based in Los Angeles, CA. We ❤️  [Open Source Software][we_love_open_source].
+You like that project? Please let us know by [leaving a testimonial][testimonial]!
 
-We offer [paid support][commercial_support] on all of our projects.  
-
-Check out [our other projects][github], [follow us on twitter][twitter], [apply for a job][jobs], or [hire us][hire] to help with your cloud strategy and implementation.
-
+Check out [our other projects][githubcorp], [follow us on twitter][twitter] or [apply for a job][jobs].
 
 
 ### Contributors
 
-|  [![Erik Osterman][osterman_avatar]][osterman_homepage]<br/>[Erik Osterman][osterman_homepage] | [![Igor Rodionov][goruha_avatar]][goruha_homepage]<br/>[Igor Rodionov][goruha_homepage] | [![Andriy Knysh][aknysh_avatar]][aknysh_homepage]<br/>[Andriy Knysh][aknysh_homepage] | [![Sarkis][sarkis_avatar]][sarkis_homepage]<br/>[Sarkis][sarkis_homepage] | [![Alexander Babai][alebabai_avatar]][alebabai_homepage]<br/>[Alexander Babai][alebabai_homepage] | [![Jon Boulle][jonboulle_avatar]][jonboulle_homepage]<br/>[Jon Boulle][jonboulle_homepage] |
-|---|---|---|---|---|---|
+|  [![Erik Osterman][osterman_avatar]][osterman_homepage]<br/>[Erik Osterman][osterman_homepage] | [![Igor Rodionov][goruha_avatar]][goruha_homepage]<br/>[Igor Rodionov][goruha_homepage] | [![Andriy Knysh][aknysh_avatar]][aknysh_homepage]<br/>[Andriy Knysh][aknysh_homepage] | [![Sarkis][sarkis_avatar]][sarkis_homepage]<br/>[Sarkis][sarkis_homepage] | [![Alexander Babai][alebabai_avatar]][alebabai_homepage]<br/>[Alexander Babai][alebabai_homepage] | [![Jon Boulle][jonboulle_avatar]][jonboulle_homepage]<br/>[Jon Boulle][jonboulle_homepage] | [![Patrice Lachance][patlachance_avatar]][patlachance_homepage]<br/>[Patrice Lachance][patlachance_homepage] |
+|---|---|---|---|---|---|---|
 
   [osterman_homepage]: https://github.com/osterman
   [osterman_avatar]: https://img.cloudposse.com/150x150/https://github.com/osterman.png
@@ -441,37 +392,30 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
   [alebabai_avatar]: https://img.cloudposse.com/150x150/https://github.com/alebabai.png
   [jonboulle_homepage]: https://github.com/jonboulle
   [jonboulle_avatar]: https://img.cloudposse.com/150x150/https://github.com/jonboulle.png
+  [patlachance_homepage]: https://github.com/patlachance
+  [patlachance_avatar]: https://img.cloudposse.com/150x150/https://github.com/patlachance.png
 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
 
-  [logo]: https://cloudposse.com/logo-300x69.svg
-  [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=docs
-  [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=website
-  [github]: https://cpco.io/github?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=github
-  [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=jobs
-  [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=hire
-  [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=slack
-  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=linkedin
-  [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=twitter
-  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=testimonial
-  [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=office_hours
-  [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=newsletter
-  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=discourse
-  [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=email
-  [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=commercial_support
-  [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=we_love_open_source
-  [terraform_modules]: https://cpco.io/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=terraform_modules
-  [readme_header_img]: https://cloudposse.com/readme/header/img
-  [readme_header_link]: https://cloudposse.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=readme_header_link
+  [logo]: #
+  [docs]: https://portal.sgcip.com/docs?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=docs
+  [cipcorpwebsite]: https://portal.sgcip.com?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=website
+  [githubcip]: https://github.com/sgcip/cip-core-platform?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=github
+  [githubcorp]: https://github.com/sgcip/?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=github
+  [jobs]: https://portal.sgcip.com/?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=jobs
+  [slack]: https://portal.sgcip.com/slack?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=slack
+  [linkedin]: https://www.linkedin.com/?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=linkedin
+  [twitter]: https://twitter.com/sg_cip?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=twitter
+  [testimonial]: https://portal.sgcip.com/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=testimonial
+  [email]: https://portal.sgcip.com/contact?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=email
+  [we_love_open_source]: https://portal.sgcip.com?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=we_love_open_source
   [readme_footer_img]: https://cloudposse.com/readme/footer/img
-  [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=readme_footer_link
-  [readme_commercial_support_img]: https://cloudposse.com/readme/commercial-support/img
-  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/build-harness&utm_content=readme_commercial_support_link
-  [share_twitter]: https://twitter.com/intent/tweet/?text=Build+Harness&url=https://github.com/cloudposse/build-harness
-  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=Build+Harness&url=https://github.com/cloudposse/build-harness
-  [share_reddit]: https://reddit.com/submit/?url=https://github.com/cloudposse/build-harness
-  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/cloudposse/build-harness
-  [share_googleplus]: https://plus.google.com/share?url=https://github.com/cloudposse/build-harness
-  [share_email]: mailto:?subject=Build+Harness&body=https://github.com/cloudposse/build-harness
-  [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/build-harness?pixel&cs=github&cm=readme&an=build-harness
+  [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=sgcip/build-harness&utm_content=readme_footer_link
+  [share_twitter]: https://twitter.com/intent/tweet/?text=Build+Harness&url=https://github.com/sgcip/build-harness
+  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=Build+Harness&url=https://github.com/sgcip/build-harness
+  [share_reddit]: https://reddit.com/submit/?url=https://github.com/sgcip/build-harness
+  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/sgcip/build-harness
+  [share_googleplus]: https://plus.google.com/share?url=https://github.com/sgcip/build-harness
+  [share_email]: mailto:?subject=Build+Harness&body=https://github.com/sgcip/build-harness
+  [beacon]: https://ga-beacon.sgcip.com/UA-167171211-1/sgcip/build-harness?pixel&cs=github&cm=readme&an=build-harness

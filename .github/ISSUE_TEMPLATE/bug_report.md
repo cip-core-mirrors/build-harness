@@ -7,9 +7,12 @@ assignees: ''
 
 ---
 
-Found a bug? Maybe our [Slack Community](https://slack.cloudposse.com) can help. 
-
+Found a bug? Maybe CloudPosse's [Slack Community](https://slack.cloudposse.com) can help.
 [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+
+You can also check our Cloud Innovation Platform [Slack Community](https://slack.sgcip.com)
+[![Slack Community](https://slack.sgcip.com/badge.svg)](https://slack.sgcip.com)
+
 
 ## Describe the Bug
 A clear and concise description of what the bug is.

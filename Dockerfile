@@ -1,5 +1,5 @@
 FROM golang:1.13.4-alpine3.10
-LABEL maintainer="Cloud Posse <hello@cloudposse.com>"
+LABEL maintainer="CIP ProServ <cip-ps@sgcip.com>"
 
 LABEL "com.github.actions.name"="Build Harness"
 LABEL "com.github.actions.description"="Run any build-harness make target"

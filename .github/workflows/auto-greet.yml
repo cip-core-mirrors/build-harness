@@ -10,14 +10,17 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: |-
-          Thank you for reporting the issue! If you haven't already [joined our slack community](https://slack.sweetops.com), then we invite you to do so.
+          Thank you for reporting the issue! If you haven't already [joined our slack community](https://slack.sgcip.com), then we invite you to do so.
+          [![Slack Community](https://slack.sgcip.com/badge.svg)](https://slack.sgcip.com)
+          
+          You might as well want to also [joined CloudPosse's slack community](https://slack.sweetops.com).
+          This is a great place to get help and ask questions from an AMAZING community.
 
-          This is a great place to get help and ask questions from our AMAZING community.  
-
-          [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
         pr-message: |-
-          Thank you for submitting this PR! If you haven't already [joined our slack community](https://slack.sweetops.com), then we invite you to do so.
+          Thank you for submitting this PR! If you haven't already [joined our slack community](https://slack.sgcip.com), then we invite you to do so.
+          By joining our slack, we'll be able to review your PR faster.
 
-          We receive an overwhelming number of contributions. By joining our slack, we'll be able to review your PR faster.
-
-          [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+          [![Slack Community](https://slack.sgcip.com/badge.svg)](https://slack.sgcip.com)
+          
+          You might as well want to also [joined CloudPosse's slack community](https://slack.sweetops.com).
+          This is a great place to get help and ask questions from an AMAZING community.
